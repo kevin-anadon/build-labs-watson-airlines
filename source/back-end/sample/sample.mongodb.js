@@ -25,7 +25,7 @@ const create_connection = async () => {
         // Get the mongodb certificate from Secrets Manager Service
         let cert = await secretsManagerService.getSecret({
             secretType: 'imported_cert',
-            id: process.env.SECRET_MANAGER_CERT_ID, //TODO. Validar si es correcto este ID o es de DB. Documentarlo.
+            id: process.env.SECRET_MANAGER_CERT_ID,
         });
         
         // Create an auxiliary certificate file for the mongoose connection
