@@ -38,7 +38,7 @@ const general_specs = {
     },
     servers: [
         {
-            url : "https://localhost:8080",
+            url : "https://localhost:3000",
             description : "Local Server",
         },
         {
@@ -58,8 +58,7 @@ const general_specs = {
 // API Routes
 // NOTE: if using Express Router, pass only the root file where the route starts.
 const api_routes = [
-    "./app.js",
-    "../../server.js"
+    "./routes/index.js",
 ];
 
 // Output file path

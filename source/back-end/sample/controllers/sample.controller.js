@@ -1,7 +1,7 @@
 const { request, response } = require("express");
 
 // Mongoose Schemas
-const Sample = require("./sample.schema");
+const Sample = require("../models/sample.schema");
 
 /**
  * Sample Controller
