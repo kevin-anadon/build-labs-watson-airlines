@@ -44,33 +44,9 @@
         }
       }
     },
-    "/api": {
+    "/airlines": {
       "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Resource not found"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/airlines": {
-      "get": {
-        "description": "",
+        "description": "Get Airlines Assocciated with the IATA_CODE",
         "parameters": [
           {
             "name": "IATA_CODE",
@@ -106,9 +82,9 @@
         }
       }
     },
-    "/api/airlines/about": {
+    "/airlines/about": {
       "get": {
-        "description": "",
+        "description": "Get Watson Airline Description",
         "parameters": [],
         "responses": {
           "200": {
@@ -137,9 +113,9 @@
         }
       }
     },
-    "/api/flights/": {
+    "/flights": {
       "get": {
-        "description": "",
+        "description": "Get flights with ORIGIN_AIRPORT, DESTINATION_AIRPORT, DEPARTURE_DATE, AIRLINE as criteria",
         "parameters": [
           {
             "name": "ORIGIN_AIRPORT",
@@ -202,9 +178,9 @@
         }
       }
     },
-    "/api/flights/{id}": {
+    "/flights/{id}": {
       "get": {
-        "description": "",
+        "description": "Get Flight by ID (mongoID)",
         "parameters": [
           {
             "name": "id",
