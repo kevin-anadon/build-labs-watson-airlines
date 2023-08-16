@@ -70,7 +70,7 @@ const mongo_specs = {
                 required: [true, 'Airline`s identifier required!']
             },
             AIRLINE: {
-                type: Number,
+                type: String,
                 required: [true, 'Airline`s name required!'],
                 unique: true
             },

@@ -63,13 +63,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
+                  "type": "array",
                   "properties": {
-                    "result": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Airline"
-                      }
+                    "airlines": {
+                      "$ref": "#/components/schemas/Airline"
                     }
                   }
                 }
@@ -94,13 +91,8 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "watsonAirlineDescription": {
-                          "type": "string"
-                        }
-                      }
+                    "message": {
+                      "type": "string"
                     }
                   }
                 }
@@ -157,15 +149,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
+                  "type": "array",
                   "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "flight": {
-                          "$ref": "#/components/schemas/Flight"
-                        }
-                      }
+                    "flights": {
+                      "$ref": "#/components/schemas/Flight"
                     }
                   }
                 }
@@ -199,13 +186,8 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "flight": {
-                          "$ref": "#/components/schemas/Flight"
-                        }
-                      }
+                    "flight": {
+                      "$ref": "#/components/schemas/Flight"
                     }
                   }
                 }

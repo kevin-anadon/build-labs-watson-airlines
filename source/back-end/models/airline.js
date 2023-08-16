@@ -7,9 +7,8 @@ const AirlineSchema = Schema({
     // They could be more than one with the same iata code
   },
   AIRLINE: {
-    type: Number,
+    type: String,
     required: [true, 'Airline`s name required!'],
-    unique: true
   },
 });
 
