@@ -48,7 +48,8 @@ const getFlights = async (req = request, res = response) => {
       flights
     });
   } catch (error) {
-      res.status(503).json(error.message);
+    console.log(error);
+    res.status(503).json(error.message);
   }
 }
 
@@ -85,7 +86,8 @@ const getFlight = async (req = request, res = response) => {
       flight
     });
   } catch (error) {
-      res.status(503).json(error.message);
+    console.log(error);
+    res.status(503).json(error.message);
   }
 }
 

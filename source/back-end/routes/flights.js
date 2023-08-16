@@ -3,7 +3,7 @@ const { check } = require("express-validator")
 const router = Router()
 
 //Validators
-const { validateFields } = require("../middlewares")
+const { validateFields, flightExistId } = require("../middlewares")
 
 // Controllers
 const {getFlights, getFlight} = require("../controllers/flights")
@@ -18,6 +18,7 @@ router.get("/", [
 
 router.get("/:id", [
   check("id", "Id is not valid").isMongoId(),
+  check("id").custom(flightExistId),
   validateFields
 ], getFlight)
 
