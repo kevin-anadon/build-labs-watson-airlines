@@ -26,7 +26,20 @@
         "parameters": [],
         "responses": {
           "404": {
-            "message": "<h1>404 NOT FOUND</h1>"
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Resource not found"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -37,7 +50,20 @@
         "parameters": [],
         "responses": {
           "404": {
-            "message": "<h1>404 NOT FOUND</h1>"
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Resource not found"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -61,15 +87,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                    "type" : "object",
-                    "properties" : {
-                        "result" : {
-                            "type": "array",
-                            "airlines": {
-                              "$ref": "#/components/schemas/Airline"
-                            }
-                        }
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Airline"
+                      }
                     }
+                  }
                 }
               }
             }
@@ -88,10 +114,19 @@
           "200": {
             "description": "OK",
             "content": {
-              "result": {
-                "type": "object",
-                "watsonAirlineDescription": {
-                  "message": "#/resources/watsonAirlineDescription.txt"
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "watsonAirlineDescription": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -127,7 +162,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "date"
+              "type": "string",
+              "format": "date"
             }
           },
           {
@@ -149,8 +185,10 @@
                   "properties": {
                     "result": {
                       "type": "object",
-                      "flight": {
-                        "$ref": "#/components/schemas/Flight"
+                      "properties": {
+                        "flight": {
+                          "$ref": "#/components/schemas/Flight"
+                        }
                       }
                     }
                   }
@@ -187,8 +225,10 @@
                   "properties": {
                     "result": {
                       "type": "object",
-                      "flight": {
-                        "$ref": "#/components/schemas/Flight"
+                      "properties": {
+                        "flight": {
+                          "$ref": "#/components/schemas/Flight"
+                        }
                       }
                     }
                   }
@@ -208,274 +248,82 @@
       "Flight": {
         "type": "object",
         "properties": {
-          "type": {
+          "AIRLINE": {
             "type": "string",
-            "example": "object"
+            "example": "Airline Identifier required!"
           },
-          "properties": {
-            "type": "object",
-            "properties": {
-              "AIRLINE": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  },
-                  "required": {
-                    "type": "array",
-                    "example": [
-                      true,
-                      "Airline Identifier required!"
-                    ],
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "FLIGHT_NUMBER": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  },
-                  "required": {
-                    "type": "array",
-                    "example": [
-                      true,
-                      "Flight Number required!"
-                    ],
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "ORIGIN_AIRPORT": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  },
-                  "required": {
-                    "type": "array",
-                    "example": [
-                      true,
-                      "Starting Airport (IATA) required!"
-                    ],
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "DESTINATION_AIRPORT": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  },
-                  "required": {
-                    "type": "array",
-                    "example": [
-                      true,
-                      "Destination Airport (IATA) required!"
-                    ],
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "CANCELLED": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  },
-                  "default": {
-                    "type": "boolean",
-                    "example": false
-                  }
-                }
-              },
-              "DEPARTURE_DATE": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  }
-                }
-              },
-              "ARRIVAL_DATE": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "Airport": {
-        "type": "object",
-        "properties": {
-          "type": {
+          "FLIGHT_NUMBER": {
+            "type": "number",
+            "example": 123
+          },
+          "ORIGIN_AIRPORT": {
             "type": "string",
-            "example": "object"
+            "example": "Starting Airport (IATA) required!"
           },
-          "properties": {
-            "type": "object",
-            "properties": {
-              "IATA_CODE": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  },
-                  "required": {
-                    "type": "array",
-                    "example": [
-                      true,
-                      "Location Identifier required!"
-                    ],
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "AIRPORT": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  },
-                  "required": {
-                    "type": "array",
-                    "example": [
-                      true,
-                      "Airport`s name required!"
-                    ],
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "CITY": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  },
-                  "required": {
-                    "type": "array",
-                    "example": [
-                      true,
-                      "Airport`s city required!"
-                    ],
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "STATE": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  },
-                  "required": {
-                    "type": "array",
-                    "example": [
-                      true,
-                      "Airport`s state required!"
-                    ],
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "COUNTRY": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  },
-                  "required": {
-                    "type": "array",
-                    "example": [
-                      true,
-                      "Airport`s country required!"
-                    ],
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
+          "DESTINATION_AIRPORT": {
+            "type": "string",
+            "example": "Destination Airport (IATA) required!"
+          },
+          "CANCELLED": {
+            "type": "boolean",
+            "example": false
+          },
+          "DEPARTURE_DATE": {
+            "type": "string",
+            "format": "date"
+          },
+          "ARRIVAL_DATE": {
+            "type": "string",
+            "format": "date"
           }
         }
       },
       "Airline": {
         "type": "object",
         "properties": {
-          "type": {
+          "IATA_CODE": {
             "type": "string",
-            "example": "object"
+            "example": "AA",
+            "description": "Airline's identifier required!"
           },
-          "properties": {
-            "type": "object",
-            "properties": {
-              "IATA_CODE": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  },
-                  "required": {
-                    "type": "array",
-                    "example": [
-                      true,
-                      "Airline`s identifier required!"
-                    ],
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "AIRLINE": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "function"
-                  },
-                  "required": {
-                    "type": "array",
-                    "example": [
-                      true,
-                      "Airline`s name required!"
-                    ],
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "unique": {
-                    "type": "boolean",
-                    "example": true
-                  }
-                }
-              }
-            }
+          "AIRLINE": {
+            "type": "string",
+            "example": "American Airlines",
+            "description": "Airline's name required!"
           }
-        }
+        },
+        "required": ["IATA_CODE", "AIRLINE"]
+      },
+      "Airport": {
+        "type": "object",
+        "properties": {
+          "IATA_CODE": {
+            "type": "string",
+            "example": "LAX",
+            "description": "Location Identifier required!"
+          },
+          "AIRPORT": {
+            "type": "string",
+            "example": "Los Angeles International Airport",
+            "description": "Airport's name required!"
+          },
+          "CITY": {
+            "type": "string",
+            "example": "Los Angeles",
+            "description": "Airport's city required!"
+          },
+          "STATE": {
+            "type": "string",
+            "example": "California",
+            "description": "Airport's state required!"
+          },
+          "COUNTRY": {
+            "type": "string",
+            "example": "United States",
+            "description": "Airport's country required!"
+          }
+        },
+        "required": ["IATA_CODE", "AIRPORT", "CITY", "STATE", "COUNTRY"]
       }
     }
   },

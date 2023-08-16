@@ -1,7 +1,6 @@
 const { request, response } = require("express");
 const { Flight } = require("../models");
 
-<<<<<<< HEAD
 /**
  * getFlights Controller
  * @param {JSON} req request information
@@ -28,9 +27,6 @@ const getFlights = async (req = request, res = response) => {
           }
       }   
   */
-=======
-const getFlights = async (req = request, res = response) => {
->>>>>>> 01f6bf1cdb418f7a40e4929efd56b95cc96e038b
   try {
     const { ORIGIN_AIRPORT, DESTINATION_AIRPORT, DEPARTURE_DATE, AIRLINE } = req.query;
     const [month, year, day] = DEPARTURE_DATE.split("-")
