@@ -30,6 +30,9 @@ const getFlights = async (req = request, res = response) => {
   try {
     const { ORIGIN_AIRPORT, DESTINATION_AIRPORT, DEPARTURE_DATE, AIRLINE } = req.query;
     const [month, year, day] = DEPARTURE_DATE.split("-")
+    ORIGIN_AIRPORT.toUpperCase();
+    DESTINATION_AIRPORT.toUpperCase();
+    AIRLINE.toUpperCase();
 
     const flights = await Flight.find({ 
       ORIGIN_AIRPORT, 
