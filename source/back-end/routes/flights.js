@@ -5,7 +5,11 @@ const router = Router()
 //Validators
 const { validateFields } = require("../middlewares")
 
+<<<<<<< HEAD
 // Controllers
+=======
+// Controller
+>>>>>>> 01f6bf1cdb418f7a40e4929efd56b95cc96e038b
 const {getFlights, getFlight} = require("../controllers/flights")
 
 router.get("/", [

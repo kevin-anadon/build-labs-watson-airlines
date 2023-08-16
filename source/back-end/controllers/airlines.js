@@ -5,6 +5,7 @@ const { Airline } = require("../models");
 
 const DESC_PATH = path.join(__dirname, "../resources/watsonAirlineDescription.txt");
 
+<<<<<<< HEAD
 /**
  * getAirlinesAssocciated controller
  * @param {JSON} req request information
@@ -31,6 +32,9 @@ const getAirlinesAssocciated = async (req = request, res = response) => {
             }
         }   
     */
+=======
+const getAirlinesAssocciated = async (req = request, res = response) => {
+>>>>>>> 01f6bf1cdb418f7a40e4929efd56b95cc96e038b
   try {
     const { IATA_CODE } = req.query;
     const airlines = await Airline.find({ IATA_CODE });
@@ -42,6 +46,7 @@ const getAirlinesAssocciated = async (req = request, res = response) => {
   }
 }
 
+<<<<<<< HEAD
 /**
  * getWatsonAirlineDescription Controller
  * @param {JSON} req request information
@@ -61,6 +66,9 @@ const getWatsonAirlineDescription = (req = request, res = response) => {
           }
       }   
   */
+=======
+const getWatsonAirlineDescription = (req = request, res = response) => {
+>>>>>>> 01f6bf1cdb418f7a40e4929efd56b95cc96e038b
   try {
     const watsonAirlineDescription = fs.readFileSync(DESC_PATH, 'utf-8')
     res.status(200).json({

@@ -1,8 +1,10 @@
-// URL: /api/ OR /
-const { Router, request, response } = require("express")
+// URL: /api/
+
+const { Router } = require("express")
 const router = Router()
 
-router.get('/', (req = request, res = response) => {
+
+router.get('/', (req, res) => {
   res.status(404).send('<h1>404 NOT FOUND</h1>')
 })
 
