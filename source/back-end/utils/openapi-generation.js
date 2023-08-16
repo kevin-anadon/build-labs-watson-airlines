@@ -2,25 +2,79 @@
  * For more information see: https://github.com/davibaltar/swagger-autogen#openapi-3x
  */
 const swagger_autogen = require("swagger-autogen")({ openapi: "3.0.0" });
+const path = require("path");
 
 // Data schemas
 const mongo_specs = {
-    Sample: {
+    Flight: {
         type: "object",
         properties: {
-            ATTRIBUTE_1: {
-                type: "string",
+            AIRLINE: {
+                type: String,
+                required: [true, 'Airline Identifier required!']
             },
-            ATTRIBUTE_2: {
-                type: "number",
+            FLIGHT_NUMBER: {
+                type: Number,
+                required: [true, 'Flight Number required!'],
             },
-            ATTRIBUTE_3: {
-                type: "boolean",
+            ORIGIN_AIRPORT: {
+                type: String,
+                required: [true, 'Starting Airport (IATA) required!'],
             },
-            ATTRIBUTE_4: {
-                type: "date",
+            DESTINATION_AIRPORT: {
+                type: String,
+                required: [true, 'Destination Airport (IATA) required!']
             },
-        },
+            CANCELLED: {
+                type: Boolean,
+                default: false
+            },
+            DEPARTURE_DATE: {
+                type: Date,
+            },
+            ARRIVAL_DATE: {
+                type: Date,
+            }
+        }
+    },
+    Airport: {
+        type: "object",
+        properties: {
+            IATA_CODE: {
+                type: String,
+                required: [true, 'Location Identifier required!']
+            },
+            AIRPORT: {
+                type: String,
+                required: [true, 'Airport`s name required!'],
+            },
+            CITY: {
+                type: String,
+                required: [true, 'Airport`s city required!'],
+            },
+            STATE: {
+                type: String,
+                required: [true, 'Airport`s state required!']
+            },
+            COUNTRY: {
+                type: String,
+                required: [true, 'Airport`s country required!']
+            },
+        }
+    },
+    Airline: {
+        type: "object",
+        properties: {
+            IATA_CODE: {
+                type: String,
+                required: [true, 'Airline`s identifier required!']
+            },
+            AIRLINE: {
+                type: Number,
+                required: [true, 'Airline`s name required!'],
+                unique: true
+            },
+        }
     }
 };
 
@@ -31,18 +85,18 @@ const general_specs = {
         description:
             "This is a Sample REST API for the Watson Airlines Customer Experience use case.",
         contact: {
-            name: "Josefina R. Casanova",
-            email: "josefinarcasanova@ibm.com",
+            name: "Kevin Anadon",
+            email: "mathewanadon@gmail.com",
         },
         version: "1.0.0",
     },
     servers: [
         {
-            url : "https://localhost:3000",
+            url : "https://localhost:3000/api",
             description : "Local Server",
         },
         {
-            url: "https://{app-name}.{cloud-region}.codeengine.appdomain.cloud",
+            url: "https://{app-name}.{cloud-region}.codeengine.appdomain.cloud/api",
             description: "IBM Code Engine Deployment",
         },
     ],
@@ -58,15 +112,17 @@ const general_specs = {
 // API Routes
 // NOTE: if using Express Router, pass only the root file where the route starts.
 const api_routes = [
-    "./routes/index.js",
+    "./routes/airlines.js",
+    "./routes/flights.js",
+    "./routes/notFound.js"
 ];
 
 // Output file path
-const output_file_path = "./docs/openapi-spec.json";
+const output_file_path = path.join(__dirname, '..', 'docs', 'openapi-spec.json');
 
 // Generate OpenAPI spec
 swagger_autogen(
-    (outputFile = output_file_path),
-    (endpointsFiles = api_routes),
-    (data = general_specs)
+    (output_file_path),
+    (api_routes),
+    (general_specs)
 );

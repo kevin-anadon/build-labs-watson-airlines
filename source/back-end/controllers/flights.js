@@ -56,7 +56,6 @@ const getFlights = async (req = request, res = response) => {
   }
 }
 
-<<<<<<< HEAD
 /**
  * getFlight by ID Controller
  * @param {JSON} req request information
@@ -83,9 +82,6 @@ const getFlight = async (req = request, res = response) => {
           }
       }   
   */
-=======
-const getFlight = async (req = request, res = response) => {
->>>>>>> 01f6bf1cdb418f7a40e4929efd56b95cc96e038b
   try {
     const { id } = req.params;
     const flight = await Flight.findById(id);
