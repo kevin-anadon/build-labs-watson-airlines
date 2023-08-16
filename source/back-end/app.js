@@ -3,7 +3,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 require('dotenv').config();
 
-const { create_connection, close_connection } = require('./config/sample.mongodb');
+const { create_connection, close_connection } = require('./config/mongodb');
 
 // Initialization
 const app = express();
