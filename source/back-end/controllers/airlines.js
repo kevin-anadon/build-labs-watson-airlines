@@ -9,9 +9,9 @@ const DESC_PATH = path.join(__dirname, "../resources/watsonAirlineDescription.tx
  * getAirlinesAssocciated controller
  * @param {JSON} req request information
  * @param {JSON} res response information
- * @returns {JSON} return Airlines Assocciated with the IATA_CODE
+ * @returns {JSON} return Assocciated Airlines with the IATA_CODE
  */
-const getAirlinesAssocciated = async (req = request, res = response) => {
+const getAssocciatedAirlines = async (req = request, res = response) => {
   /* #swagger.responses[200] = {
             "description": "OK",
             "content": {
@@ -33,6 +33,7 @@ const getAirlinesAssocciated = async (req = request, res = response) => {
     */
   try {
     const { IATA_CODE } = req.query;
+    IATA_CODE.toUpperCase();
     const airlines = await Airline.find({ IATA_CODE });
     res.status(200).json({
       airlines
@@ -72,6 +73,6 @@ const getWatsonAirlineDescription = (req = request, res = response) => {
 }
 
 module.exports = {
-  getAirlinesAssocciated,
+  getAssocciatedAirlines,
   getWatsonAirlineDescription
 };

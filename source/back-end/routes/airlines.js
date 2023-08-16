@@ -6,13 +6,13 @@ const router = Router()
 const { validateFields } = require("../middlewares")
 
 // Controller
-const {getAirlinesAssocciated, getWatsonAirlineDescription} = require("../controllers/airlines")
+const {getAssocciatedAirlines, getWatsonAirlineDescription} = require("../controllers/airlines")
 
 router.get("/", [
   // iata_code is required at req.query
   check("IATA_CODE").not().isEmpty(), 
   validateFields
-], getAirlinesAssocciated)
+], getAssocciatedAirlines)
 
 router.get("/about",getWatsonAirlineDescription);
 

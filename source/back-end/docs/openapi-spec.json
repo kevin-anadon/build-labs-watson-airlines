@@ -46,7 +46,7 @@
     },
     "/airlines": {
       "get": {
-        "description": "Get Airlines Assocciated with the IATA_CODE",
+        "description": "Get Assocciated Airlines with the IATA_CODE",
         "parameters": [
           {
             "name": "IATA_CODE",
