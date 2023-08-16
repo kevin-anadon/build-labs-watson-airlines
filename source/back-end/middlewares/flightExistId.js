@@ -6,7 +6,7 @@ const flightExistId = async (id = '') => {
     if (!flight) throw new Error('Flight with this id does not exist');
   } catch (error) {
     console.log(error);
-    throw new Error('Contact with the administrator')
+    throw error
   }
 }
 
