@@ -83,7 +83,7 @@ const general_specs = {
     info: {
         title: "Watson Airlines Customer Experience",
         description:
-            "This is a Sample REST API for the Watson Airlines Customer Experience use case.",
+            "This is a REST API for the Watson Airlines Customer Experience use case.",
         contact: {
             name: "Kevin Anadon",
             email: "mathewanadon@gmail.com",
@@ -96,7 +96,7 @@ const general_specs = {
             description : "Local Server",
         },
         {
-            url: "https://{app-name}.{cloud-region}.codeengine.appdomain.cloud/api",
+            url: "https://bl-watson-airlines.164312aqh8r6.us-south.codeengine.appdomain.cloud/api",
             description: "IBM Code Engine Deployment",
         },
     ],
