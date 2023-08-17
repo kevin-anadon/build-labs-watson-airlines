@@ -34,7 +34,7 @@ const getAssocciatedAirlines = async (req = request, res = response) => {
   try {
     const { IATA_CODE } = req.query;
     IATA_CODE.toUpperCase();
-    const airlines = await Airline.find({ IATA_CODEe });
+    const airlines = await Airline.find({ IATA_CODE });
     res.status(200).json({
       airlines
     });
