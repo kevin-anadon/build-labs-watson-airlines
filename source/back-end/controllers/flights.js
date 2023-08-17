@@ -51,8 +51,9 @@ const getFlights = async (req = request, res = response) => {
       flights
     });
   } catch (error) {
-    console.log(error);
-    res.status(503).json(error.message);
+    res.status(503).json({
+        message: error.message
+    });
   }
 }
 
@@ -89,8 +90,9 @@ const getFlight = async (req = request, res = response) => {
       flight
     });
   } catch (error) {
-    console.log(error);
-    res.status(503).json(error.message);
+    res.status(503).json({
+        message: error.message
+    });
   }
 }
 

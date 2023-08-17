@@ -34,12 +34,14 @@ const getAssocciatedAirlines = async (req = request, res = response) => {
   try {
     const { IATA_CODE } = req.query;
     IATA_CODE.toUpperCase();
-    const airlines = await Airline.find({ IATA_CODE });
+    const airlines = await Airline.find({ IATA_CODEe });
     res.status(200).json({
       airlines
     });
   } catch (error) {
-      res.status(503).json(error.message);
+      res.status(503).json({
+        message: error.message
+      });
   }
 }
 
@@ -68,7 +70,9 @@ const getWatsonAirlineDescription = (req = request, res = response) => {
       message: watsonAirlineDescription
     });
   } catch (error) {
-      res.status(503).json(error.message);
+      res.status(503).json({
+        message: error.message
+      });
   }
 }
 

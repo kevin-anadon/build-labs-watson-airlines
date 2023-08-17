@@ -5,7 +5,6 @@ const flightExistId = async (id = '') => {
     const flight = await Flight.findById(id);
     if (!flight) throw new Error('Flight with this id does not exist');
   } catch (error) {
-    console.log(error);
     throw error
   }
 }

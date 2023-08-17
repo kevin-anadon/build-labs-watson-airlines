@@ -63,10 +63,41 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "airlines": {
-                      "$ref": "#/components/schemas/Airline"
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Airline"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "msg": {
+                            "type": "string",
+                            "example": "Invalid value"
+                          },
+                          "path": {
+                            "type": "string",
+                            "example": "IATA_CODE"
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -74,7 +105,20 @@
             }
           },
           "503": {
-            "description": "Service Unavailable"
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Service Unavailable"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -100,7 +144,20 @@
             }
           },
           "503": {
-            "description": "Service Unavailable"
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Service Unavailable"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -149,10 +206,41 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "flights": {
-                      "$ref": "#/components/schemas/Flight"
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Flight"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "msg": {
+                            "type": "string",
+                            "example": "Invalid value"
+                          },
+                          "path": {
+                            "type": "string",
+                            "example": "IATA_CODE"
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -160,7 +248,20 @@
             }
           },
           "503": {
-            "description": "Service Unavailable"
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Service Unavailable"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -194,8 +295,49 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "msg": {
+                            "type": "string",
+                            "example": "Flight with this id doesnt exist"
+                          },
+                          "path": {
+                            "type": "string",
+                            "example": "IATA_CODE"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
           "503": {
-            "description": "Service Unavailable"
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Service Unavailable"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
